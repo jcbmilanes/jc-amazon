@@ -1,5 +1,12 @@
 export const initialState = {
-    basket: [],
+    basket: [{
+        id:"1234",
+        title:"AmazonBasics 12-Sheet Cross-Cut Paper, CD and Credit Card Shredder",
+        price:10.51,
+        rating:4,
+        image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/July/amazonbasics_520x520._SY304_CB442725065_.jpg"
+
+    }],
     user: null,
 };
 
