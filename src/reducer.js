@@ -1,12 +1,5 @@
 export const initialState = {
-    basket: [{
-        id:"1234",
-        title:"AmazonBasics 12-Sheet Cross-Cut Paper, CD and Credit Card Shredder",
-        price:10.51,
-        rating:4,
-        image:"https://images-na.ssl-images-amazon.com/images/G/01/AmazonExports/Fuji/2019/July/amazonbasics_520x520._SY304_CB442725065_.jpg"
-
-    }],
+    basket: [],
     user: null,
 };
 
@@ -18,11 +11,23 @@ const reducer = (state, action) => {
                 ...state,
                 basket:[...state.basket, action.item],
             }
-        break;
 
         case 'REMOVE_FROM_BASKET':
-            return {state}
-        break;
+            // we cloned the basket
+            let newBasket = [...state.basket];
+
+            const index = state.basket.findIndex((basketItem) => basketItem.id === action.id );
+
+            if(index >= 0){
+                //item exist in basket, remove it
+                newBasket.splice(index, 1);                    
+            }else{
+                console.warn(
+                    `Cant remove product (id: ${action.id}) as its not in the basket!` 
+                );
+            }
+
+            return {...state, basket: newBasket};
 
         default:
             return state;
