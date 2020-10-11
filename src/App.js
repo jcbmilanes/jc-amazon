@@ -9,7 +9,7 @@ import { useStateValue } from './StateProvider';
 import { auth } from './firebase';
 
 function App() {
-  const [{basket}, dispatch] = useStateValue();
+  const [{basket,user}, dispatch] = useStateValue();
 
   // useEffect
   // piece of code which runs based on a given condition
@@ -39,7 +39,7 @@ function App() {
     };
   }, [])
 
-  //console.log("USER IS >>>", user);
+  console.log("USER IS >>>", user);
 
   return (
     <Router>
